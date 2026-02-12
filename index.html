@@ -135,8 +135,8 @@
         let tx = 0;
         let ty = 0;
         let resetTimer;
-        const detectionRadius = 150;
-        const pushStrength = 30; // Increased strength for more responsive feel
+        const detectionRadius = 300; // Increased radius to detect mouse earlier
+        const pushStrength = 150; // Increased strength to move button further/faster
 
         document.addEventListener('mousemove', (e) => {
             const rect = runawayBtn.getBoundingClientRect();
@@ -187,8 +187,8 @@
                 }
 
                 // Apply transform
-                // Use a short transition for smooth movement, but quick enough to run away
-                runawayBtn.style.transition = 'transform 0.05s linear';
+                // Instant transition for impossible-to-catch movement
+                runawayBtn.style.transition = 'transform 0s linear';
                 runawayBtn.style.transform = `translate(${tx}px, ${ty}px)`;
 
                 // Reset timer
