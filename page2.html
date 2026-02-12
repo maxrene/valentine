@@ -34,6 +34,7 @@
         .puzzle-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
             gap: 8px;
         }
         /* Custom floating animation for hearts */
@@ -141,6 +142,13 @@
         const emptyPiece = 8;
         const imageUrl = 'couple1.JPG';
 
+        // Configuration for image cropping
+        const puzzleConfig = {
+            cropX: 50, // 0-100% (0 = left, 50 = center, 100 = right)
+            cropY: 50, // 0-100% (0 = top, 50 = center, 100 = bottom)
+            aspectRatio: 6832 / 4555 // Aspect ratio of couple1.JPG
+        };
+
         // Initialize state
         function init() {
             state = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -181,6 +189,45 @@
             return neighbors;
         }
 
+        function getBgStyle(pieceIdx) {
+            const row = Math.floor(pieceIdx / size);
+            const col = pieceIdx % size;
+            const ar = puzzleConfig.aspectRatio;
+            let bgSize, bgPos;
+
+            if (ar >= 1) {
+                // Landscape: Fit Height (3 rows), Crop Width
+                bgSize = 'auto 300%';
+                // Y is standard (fits perfectly)
+                const posY = row * 50;
+
+                // X is dynamic based on crop
+                // Formula derived for background-position percentage to map a tile to the correct part of the overflowing image
+                const crop = puzzleConfig.cropX / 100;
+                const denominator = (3 * ar) - 1;
+                // Calculate position relative to the overflow
+                const numerator = col + (3 * crop * (ar - 1));
+                const posX = (numerator / denominator) * 100;
+
+                bgPos = `${posX}% ${posY}%`;
+            } else {
+                // Portrait: Fit Width (3 cols), Crop Height
+                bgSize = '300% auto';
+                // X is standard (fits perfectly)
+                const posX = col * 50;
+
+                // Y is dynamic based on crop
+                const crop = puzzleConfig.cropY / 100;
+                const invAr = 1 / ar; // > 1
+                const denominator = (3 * invAr) - 1;
+                const numerator = row + (3 * crop * (invAr - 1));
+                const posY = (numerator / denominator) * 100;
+
+                bgPos = `${posX}% ${posY}%`;
+            }
+            return { bgSize, bgPos };
+        }
+
         function render() {
             grid.innerHTML = '';
             state.forEach((pieceIdx, currentIdx) => {
@@ -193,11 +240,10 @@
                 } else {
                     div.className += ' bg-cover cursor-pointer hover:scale-[1.02] hover:shadow-md';
                     div.style.backgroundImage = `url('${imageUrl}')`;
-                    div.style.backgroundSize = '300% 300%';
-                    // Calculate position based on the PIECE index (original position)
-                    const row = Math.floor(pieceIdx / size);
-                    const col = pieceIdx % size;
-                    div.style.backgroundPosition = `${col * 50}% ${row * 50}%`;
+
+                    const style = getBgStyle(pieceIdx);
+                    div.style.backgroundSize = style.bgSize;
+                    div.style.backgroundPosition = style.bgPos;
 
                     div.onclick = () => handleMove(currentIdx);
                 }
@@ -233,8 +279,10 @@
                      emptyDiv.innerHTML = '';
                      emptyDiv.className = 'rounded transition-all duration-200 shadow-sm relative overflow-hidden bg-cover';
                      emptyDiv.style.backgroundImage = `url('${imageUrl}')`;
-                     emptyDiv.style.backgroundSize = '300% 300%';
-                     emptyDiv.style.backgroundPosition = '100% 100%';
+
+                     const style = getBgStyle(8); // Get style for the 9th piece (index 8)
+                     emptyDiv.style.backgroundSize = style.bgSize;
+                     emptyDiv.style.backgroundPosition = style.bgPos;
                 }
             }
         }
