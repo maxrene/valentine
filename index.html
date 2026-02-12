@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Valentine Proposal Homepage</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1337",
+                        "primary-light": "#ffe4e9", 
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221013",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                    boxShadow: {
+                        'soft-pink': '0 20px 40px -10px rgba(236, 19, 55, 0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom floating animation for hearts */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.8; }
+            100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+        }
+        
+        @keyframes float-delayed {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
+            50% { transform: translateY(-15px) rotate(-10deg); opacity: 0.7; }
+            100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
+        }
+
+        .floating-heart {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-heart-delayed {
+            animation: float-delayed 7s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        /* Hover effect for the NO button to make it "run away" - simplified version without JS */
+        .runaway-wrapper:hover .runaway-btn {
+            transform: translateX(150px) translateY(50px) rotate(15deg);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease-out;
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(#ec1337 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display min-h-screen flex flex-col overflow-hidden relative selection:bg-primary/30">
+<!-- Background Pattern & Gradient -->
+<div class="absolute inset-0 z-0 bg-primary/5 dark:bg-background-dark pointer-events-none"></div>
+<div class="absolute inset-0 z-0 bg-pattern opacity-[0.07] pointer-events-none"></div>
+<!-- Floating Background Hearts -->
+<div class="absolute top-1/4 left-[10%] text-primary/20 floating-heart">
+<span class="material-icons" style="font-size: 4rem;">favorite</span>
+</div>
+<div class="absolute bottom-1/4 right-[15%] text-primary/10 floating-heart-delayed">
+<span class="material-icons" style="font-size: 6rem;">favorite</span>
+</div>
+<div class="absolute top-20 right-[20%] text-primary/15 floating-heart">
+<span class="material-icons" style="font-size: 3rem;">favorite_border</span>
+</div>
+<div class="absolute bottom-20 left-[20%] text-primary/15 floating-heart-delayed">
+<span class="material-icons" style="font-size: 3.5rem;">favorite_border</span>
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 flex-grow flex items-center justify-center p-6">
+<!-- Central Card -->
+<div class="w-full max-w-lg bg-white dark:bg-[#2a1518] rounded-xl shadow-soft-pink p-12 text-center border border-white/50 dark:border-white/5 backdrop-blur-sm relative group">
+<!-- Cute decoration top of card -->
+<div class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white dark:bg-[#2a1518] p-4 rounded-full shadow-lg border-4 border-background-light dark:border-background-dark">
+<img alt="A cute red heart shape on a pink background" class="w-16 h-16 rounded-full object-cover" data-alt="A cute red heart shape on a pink background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-HMts7p4SuX7PqSA6ytPiisEqzzNcUXMrHXD7GPU81r6sKoAJ9T-qAaAeq79N1ibVRozvoKnPAAX5lJAKJ_JwUpkZ7cJ-hXXDUp8JssDtSTaedpZ52zFGZVN_JvbbBubDFElIpLDfVYVl8rjjUJMTfZl90KZQvah9unPRcS0APQ3k3kWR4ChYuKkp2TdBzqplG0mqUmWqA97vMGnExHS_FYcp9VktwDkAopiYc4hzecLH9zUGMEAFA1CLpIGlZ1tkagCmXqnT4mZZ"/>
+</div>
+<div class="mt-8 space-y-4">
+
+<h1 class="font-serif text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white leading-tight">
+                    Would you be my <span class="text-primary italic">valentine?</span>
+</h1>
+
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+<button class="w-full sm:w-auto px-10 py-4 bg-primary hover:bg-red-600 text-white font-bold rounded-full shadow-lg shadow-primary/30 transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 group/btn">
+<span>Yes, I will!</span>
+<span class="material-icons text-white group-hover/btn:animate-ping text-sm">favorite</span>
+</button>
+<!-- The "Runaway" No Button Wrapper -->
+<div class="runaway-wrapper w-full sm:w-auto relative">
+<button class="runaway-btn w-full sm:w-auto px-10 py-4 bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-300 font-semibold rounded-full hover:bg-gray-200 dark:hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
+<span>No</span>
+</button>
+</div>
+</div>
+<!-- Tiny footer inside card -->
+<div class="mt-8 pt-6 border-t border-gray-100 dark:border-white/5">
+<p class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest font-semibold">
+                    Think carefully...
+                </p>
+</div>
+<!-- Corner decorations on the card -->
+<div class="absolute top-4 right-4 text-primary/10">
+<span class="material-icons text-3xl transform rotate-12">auto_awesome</span>
+</div>
+<div class="absolute bottom-4 left-4 text-primary/10">
+<span class="material-icons text-3xl transform -rotate-12">auto_awesome</span>
+</div>
+</div>
+</main>
+<!-- Footer Attribution (Subtle) -->
+<footer class="absolute bottom-4 w-full text-center z-10">
+<p class="text-sm text-gray-400 dark:text-gray-600">Made with ❤️ for you</p>
+</footer>
+</body></html>
