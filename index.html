@@ -59,14 +59,6 @@
             animation-delay: 1s;
         }
 
-        /* Hover effect for the NO button to make it "run away" - simplified version without JS */
-        .runaway-wrapper:hover .runaway-btn {
-            transform: translateX(150px) translateY(50px) rotate(15deg);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease-out;
-        }
-
         .bg-pattern {
             background-image: radial-gradient(#ec1337 1px, transparent 1px);
             background-size: 40px 40px;
@@ -137,4 +129,78 @@
 <footer class="absolute bottom-4 w-full text-center z-10">
 <p class="text-sm text-gray-400 dark:text-gray-600">Made with ❤️ for you</p>
 </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const runawayBtn = document.querySelector('.runaway-btn');
+        let tx = 0;
+        let ty = 0;
+        let resetTimer;
+        const detectionRadius = 150;
+        const pushStrength = 30; // Increased strength for more responsive feel
+
+        document.addEventListener('mousemove', (e) => {
+            const rect = runawayBtn.getBoundingClientRect();
+            const btnCenterX = rect.left + rect.width / 2;
+            const btnCenterY = rect.top + rect.height / 2;
+
+            const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+            if (dist < detectionRadius) {
+                // Calculate vector from mouse to button (direction to move away)
+                let dx = btnCenterX - e.clientX;
+                let dy = btnCenterY - e.clientY;
+
+                // Normalize and handle zero distance
+                if (dist === 0) { dx = 1; dy = 0; }
+
+                // Repulsion force - stronger when closer
+                // Using inverse square-ish falloff for better "magnet" feel
+                const force = Math.pow((detectionRadius - dist) / detectionRadius, 2);
+
+                const moveX = (dx / dist) * force * pushStrength;
+                const moveY = (dy / dist) * force * pushStrength;
+
+                tx += moveX;
+                ty += moveY;
+
+                // Boundary checks
+                // We predict where the button will be relative to the viewport
+                const nextLeft = rect.left + moveX;
+                const nextRight = rect.right + moveX;
+                const nextTop = rect.top + moveY;
+                const nextBottom = rect.bottom + moveY;
+
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+
+                // Bounce/Clamp logic to keep it strictly on screen
+                if (nextLeft < 0) {
+                    tx += (0 - nextLeft);
+                } else if (nextRight > windowWidth) {
+                    tx -= (nextRight - windowWidth);
+                }
+
+                if (nextTop < 0) {
+                    ty += (0 - nextTop);
+                } else if (nextBottom > windowHeight) {
+                    ty -= (nextBottom - windowHeight);
+                }
+
+                // Apply transform
+                // Use a short transition for smooth movement, but quick enough to run away
+                runawayBtn.style.transition = 'transform 0.05s linear';
+                runawayBtn.style.transform = `translate(${tx}px, ${ty}px)`;
+
+                // Reset timer
+                clearTimeout(resetTimer);
+                resetTimer = setTimeout(() => {
+                    tx = 0;
+                    ty = 0;
+                    runawayBtn.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'; // Bouncy return
+                    runawayBtn.style.transform = `translate(0px, 0px)`;
+                }, 5000);
+            }
+        });
+    });
+</script>
 </body></html>
