@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Romantic Verification | Prove Your Love</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1337",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221013",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="w-full px-6 py-4 flex items-center justify-between border-b border-primary/10 bg-white/50 backdrop-blur-md">
+<div class="flex items-center gap-2">
+<div class="size-8 bg-primary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</div>
+<h1 class="text-[#1b0d10] text-lg font-bold leading-tight tracking-tight">Romantic Verification</h1>
+</div>
+<button class="flex items-center justify-center rounded-full size-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex items-center justify-center p-6">
+<div class="max-w-[450px] w-full bg-white dark:bg-[#2d161a] p-8 rounded-xl shadow-[0_8px_30px_rgb(236,19,55,0.08)] border border-primary/5">
+<!-- Card Header -->
+<div class="text-center mb-8">
+<h2 class="text-[#1b0d10] dark:text-white text-2xl font-bold mb-2">Are you a robot?</h2>
+<p class="text-primary/70 dark:text-primary/60 text-base font-medium">Prove your love (and humanity)</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Slide the pieces to complete the heart.</p>
+</div>
+<!-- Puzzle Section -->
+<div class="bg-primary/5 p-4 rounded-lg border-2 border-dashed border-primary/20 mb-8">
+<div class="puzzle-grid aspect-square">
+<!-- Puzzle Pieces (8 segments and 1 empty slot) -->
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm" data-alt="Top left corner of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCB_lOaYxsRn5JvIixerepHKloSayiT0q28f6kpf8jUBMc7c9tfXaGLy4_RCmvYH2iqTjogG6g1_GcUo96fRQVaoowtiubYV7nTCf-4u6Q8PgHVgxIkAJYd-73MYmsvzlxoYQYiFnyooWWhNKQjCfbgNX_1bNl9IiYiVO16dkNI6_aLnPJ00cvl7o9Glff3qeqnooaOxnLERLA75evH3JIea3guyJRUd5O_lGy4Jem6uzkt3P42NuMv5uxsz7_YEWXItHH_oaC2Y5NH'); background-position: 0% 0%;"></div>
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm" data-alt="Top middle piece of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSaXZNEsrDcTgG0U83ErlavX61bDgbPTMLJsGohWFp7wosNhI0wHHhMAg5aPpFP3T2DIwyGjYvVxPQkY0MoI3DjC8DxYVN8DsNhByGMubLQaGeYoCvIemVhHKGK7NKnsvD1Nsk2HPcTGP3A1jTUJKBEBV5nfaf3m2-AdmoeqMX9yK6yhnQvVqjhIzTN2K8q2mc_spKldPQ6ifeGNm6B1BtBTXcmGL9g_aR4R9MPj9IXFdFC3LuOQa_VsdrIJVMm7hucSxwH9PD5lwM'); background-position: 50% 0%;"></div>
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm" data-alt="Top right piece of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwSbC0kU1lQ-1tj6DF-AxBEDzYS1EGXusTMV8dSsvvDuxrmVAZGtiIgwEpNfyNmeq9E3cczkfmrTdfOAnnPzyiWzVTHKr8Ycs9gbSfNot6f9GICB8q1VKlobErD7R_RZPgNVuoXt91Iyevxz2UsZq2_qDjRuCNzo16pr9s-roJitrSKkom6WYgXyoJdKscohRyFkQmKAWy-fTJHQuYveS4X90N5_etih7YsnrkkC3SOHqbycXzwSP_8cHR61dOu_jDNi7cCPe3tQNi'); background-position: 100% 0%;"></div>
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm" data-alt="Middle left piece of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9fcvti8xKoNJdse1aUn1WHzSbxMRMQTB1V_Ug8aa2rqeJ_ZzKQdF3wC5mLcZGY9h9J5RSYqt9oWfyXim17prQC-aheNX4XiarigjjtCy2TRb_erbxm5ovM0wagScV5gT7Kqo1Ad_N2CxHZ5AMntYIyUeMf2mjozmg7W3UxNBvl25Y6uFbI2wGOLs4x5U0BgKoNfe3dcHNPfDQv2KiUYKCdUOIhrymEBFXLQ0nGcMC9VGHsOGORDrvBSfulhE3s7uYEOQ0E8v-5Bdt'); background-position: 0% 50%;"></div>
+<!-- Empty Slot -->
+<div class="rounded bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/30 text-3xl">drag_pan</span>
+</div>
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm border-2 border-primary" data-alt="Middle right piece of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpc0feXbHVx7szzBM4SwbyYCQzJPd9epPcylzDNxlTdJk2OenzyQ-2gT3lHnwiFi6-N-rpMfxyWan978HQiLAiCmzS5DgcjF_7V6FXRvwZFYL_EKemA74VEVXzNNFQwGbST6PB4eLoFfKjjhcu8_TKp7bk1_mcb1WLlSEX9mca6ZKQBYwgqTlVLDQcFIZCEoQqfPVYOI6E7rq2I1nYT4gXbwpfCHFiUQQ6_BGVmX8a92lfLCBOVPnM77r3HtElSLyVZVufUAKlmNz7'); background-position: 100% 50%;"></div>
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm" data-alt="Bottom left piece of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB41Uv7ZWFsNhbl78UwSJoTC0j-d9FUTt0A01O2hom2EHAI3siFcThN-yhMtwwM9H5tRQ_7xMMYaizHrtG9J5uxql0kAUPEaK6-11FSY23cZ83JTCnpLPIg4mk64BlOtjBvb_CAPWXRNNHD_GvCldwnG-kWfUqooCtPthlbtIGqgrpWCkmv_hDptwJGCrc9NrS_eloRP0JL_sdsHhnemM9PruBQKf36MrCBWp2jNXqKahlB8_XWY0CmK5IOvHT5gB6vCKSCSFMtGd8F'); background-position: 0% 100%;"></div>
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm" data-alt="Bottom middle piece of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAD6WeQ9_XGH5OzomYlIXbLu1U_OckxVvjwKdIqADHcPKCBXhvIeYFXK0I-nfVGdMOX80UjVZDIbXKVdbVoyLpXjRo_t3GSQ2Orcjd3W9dko-1ulYl8RyqNp_LCLMGlUJUuJ6Jp-iGzkv0ODK1GTvMXOw7XeKH4nWG5eTTRr8wkI0fAxdr7G7MWLYWyN4b0-LG5rCbXATPhoy3yM2KmIH0G1yXe9y963kuLDSbD1NJPLLKEh7O3KIu14Pqog2XmpGArZc3ZY9gOe955'); background-position: 50% 100%;"></div>
+<div class="rounded bg-cover bg-center cursor-pointer hover:scale-[1.02] transition-transform shadow-sm" data-alt="Bottom right piece of a red heart puzzle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDimRQlKYFyY_3sqkAF7M57wx-ldCvIMTt2vqWdV9uaE9advfrP4VGwADSUpzLJV7ToycxDw5hNe4qtUwp2SS-4BufnHKruYfA0DS221aODUT-Aq4M9W-RYqXs0Q3sRFpgtHzw7vkDqDLrdZnFBB-3VsQ2iFFb2875ezB-eISAFj14fO8qf6b2BQgNx-tKr0v8ts21T_578xuTAPmCn6eEZAQ-KLlgP-tIZh472bTYG4yo5uleLHAfzNpauEP-u87ysjxn0RUQ3lBo9'); background-position: 100% 100%;"></div>
+</div><div class="hidden flex flex-col items-center justify-center p-6 mt-4 bg-primary/10 rounded-xl border border-primary/20 animate-in fade-in zoom-in duration-500" id="success-message">
+<span class="material-symbols-outlined text-primary text-5xl mb-2">favorite</span>
+<p class="text-primary text-2xl font-bold tracking-tight">I love you &lt;3</p>
+<p class="text-primary/70 text-sm mt-1">Verification Successful</p>
+</div>
+</div>
+<!-- Action Button -->
+
+<!-- Footer Links -->
+<div class="mt-6 flex flex-col items-center gap-3">
+
+
+<p class="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1 mt-4">
+<span class="material-symbols-outlined text-xs">lock</span>
+                    Secure Romantic Verification
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer Decoration -->
+<footer class="p-8 text-center text-gray-400 dark:text-gray-600 text-sm">
+<p>© 2024 Romantic Captcha. Made with love for humanity.</p>
+</footer>
+</body></html>
